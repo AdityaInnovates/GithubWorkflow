@@ -11,7 +11,7 @@ const verifySignature = (req, secret) => {
     .createHmac("sha256", secret)
     .update(JSON.stringify(req.body))
     .digest("hex")}`;
-  return req.headers["X-Hub-Signature-256"] === signature;
+  return req.headers["x-hub-signature-256"] === signature;
 };
 
 app.post("/webhook", async (req, res) => {
